@@ -1,41 +1,43 @@
-# Academy Management System 🎓
+# Student Certificate Portal
 
-A comprehensive student management system and certificate portal built with PHP and MySQL. This system allows administrators to manage courses, students, and automatically generate PDF certificates for completed courses.
+A student management system and certificate portal built with PHP and MySQL. Lets an
+administrator manage courses and students, and automatically generates PDF
+certificates for completed courses.
 
-## ✨ Features
+## Features
 
-- 👤 **Student Management**: Add, update, and manage student information.
-- 📚 **Course Management**: Create and organize various courses.
-- 🎓 **Automated Certificates**: Generate professional PDF certificates using FPDF.
-- 🔐 **Secure Access**: Simple login system for administrative tasks.
-- 🎨 **Responsive Design**: Modern UI built with Bootstrap 5.
-- 📄 **PDF Icon Integration**: Visual indicators for certificate links.
+- **Student management** — add, update, and manage student records.
+- **Course management** — create and organize courses.
+- **Automated certificates** — generate PDF certificates with FPDF.
+- **Admin login** — simple authentication gate for administrative tasks.
+- **Responsive UI** — built with Bootstrap 5.
 
-## 🛠️ Technologies Used
+## Tech Stack
 
-- **Back-end**: PHP 8.x
-- **Database**: MySQL (PDO for secure connections)
-- **Front-end**: HTML5, CSS3, Bootstrap 5
-- **PDF Generation**: FPDF Library
-- **Icons**: SVG & PNG custom assets
+- **Backend**: PHP 8.x
+- **Database**: MySQL (PDO)
+- **Frontend**: HTML5, CSS3, Bootstrap 5
+- **PDF generation**: FPDF
 
-## 🚀 Installation
+## Project Structure
+
+```
+/assets           Images and CSS
+/configuraciones  Database connection logic
+/librerias        Third-party libraries (FPDF)
+/secciones        Business logic and views (students, courses, certificates)
+/templates        Reusable header/footer components
+index.php         Login page
+```
+
+## Setup
 
 ### Prerequisites
-- [XAMPP](https://www.apachefriends.org/index.html) or any LAMP/WAMP stack.
-- Composer (optional, for dependencies).
+- XAMPP or any LAMP/WAMP stack.
 
 ### Steps
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/your-username/academy-management-system.git
-   ```
-2. **Move to web root**:
-   Copy the project folder to your `htdocs` directory (e.g., `C:\xampp\htdocs\academy`).
-3. **Database Setup**:
-   - Open **phpMyAdmin**.
-   - Create a new database named `aplicacion`.
-   - Run the following SQL to set up the tables:
+1. Clone the repository and copy it into your web root (e.g. `C:\xampp\htdocs\student-certificate-portal`).
+2. Create a database named `aplicacion` and run:
    ```sql
    CREATE TABLE `cursos` (
      `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -57,24 +59,14 @@ A comprehensive student management system and certificate portal built with PHP 
      PRIMARY KEY (`id`)
    );
    ```
-4. **Configuration**:
-   - Check `configuraciones/bd.php` to ensure the credentials match your local MySQL setup (default is usually `root` with no password).
-5. **Access the App**:
-   - Open your browser and navigate to `http://localhost/academy/`.
-   - **Login**: Use `admin` / `123456`.
+3. Check `configuraciones/bd.php` and match the credentials to your local MySQL setup.
+4. Open `http://localhost/student-certificate-portal/` in your browser.
 
-## 📁 Project Structure
+> **Demo login**: the login check in `index.php` is hardcoded to `admin` / `123456`
+> for grading/demo purposes — this is an academic project, not a production system.
+> Replace it with real authentication (hashed passwords, a `users` table) before
+> using this code as a base for anything beyond the classroom.
 
-- `/assets`: Images and CSS files.
-- `/configuraciones`: Database connection logic.
-- `/librerias`: Third-party libraries like FPDF.
-- `/secciones`: Business logic and views (Alumnos, Cursos, Certificados).
-- `/templates`: Reusable header and footer components.
-- `index.php`: Login page.
+## Author
 
-## 🤝 Contributing
-
-Feel free to fork this project and submit pull requests for any features or bug fixes.
-
----
-Developed by Alejandro Oviedo.
+**Alejandro Oviedo**
