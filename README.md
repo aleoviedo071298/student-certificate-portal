@@ -1,72 +1,54 @@
 # Student Certificate Portal
 
-A student management system and certificate portal built with PHP and MySQL. Lets an
-administrator manage courses and students, and automatically generates PDF
-certificates for completed courses.
+> PHP + MySQL student management system with automated PDF certificate generation via FPDF.
+
+![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
+
+## About
+
+A student management portal where an administrator can manage courses, register students, assign them to courses, and automatically generate PDF certificates for completed courses using the FPDF library. Built with PHP 8.x, PDO, and Bootstrap 5.
 
 ## Features
 
 - **Student management** — add, update, and manage student records.
 - **Course management** — create and organize courses.
-- **Automated certificates** — generate PDF certificates with FPDF.
-- **Admin login** — simple authentication gate for administrative tasks.
+- **Automated certificates** — generate downloadable PDF certificates with FPDF.
+- **Admin login** — authentication gate for all administrative actions.
 - **Responsive UI** — built with Bootstrap 5.
-
-## Tech Stack
-
-- **Backend**: PHP 8.x
-- **Database**: MySQL (PDO)
-- **Frontend**: HTML5, CSS3, Bootstrap 5
-- **PDF generation**: FPDF
 
 ## Project Structure
 
 ```
-/assets           Images and CSS
-/configuraciones  Database connection logic
-/librerias        Third-party libraries (FPDF)
-/secciones        Business logic and views (students, courses, certificates)
-/templates        Reusable header/footer components
-index.php         Login page
+student-certificate-portal/
+├── index.php              Login page
+├── /assets                Images and CSS
+├── /configuraciones       Database connection (bd.php)
+├── /librerias             Third-party libraries (FPDF)
+├── /secciones             Business logic and views (students, courses, certificates)
+└── /templates             Reusable header/footer components
 ```
 
 ## Setup
 
-### Prerequisites
-- XAMPP or any LAMP/WAMP stack.
+**Requirements:** PHP 8.x, MySQL, Apache (XAMPP/Laragon).
 
-### Steps
-1. Clone the repository and copy it into your web root (e.g. `C:\xampp\htdocs\student-certificate-portal`).
-2. Create a database named `aplicacion` and run:
+```bash
+git clone https://github.com/aleoviedo071298/student-certificate-portal.git
+```
+
+1. Create a database named `aplicacion` and run:
    ```sql
-   CREATE TABLE `cursos` (
-     `id` int(11) NOT NULL AUTO_INCREMENT,
-     `nombre_curso` varchar(255) NOT NULL,
-     PRIMARY KEY (`id`)
-   );
-
-   CREATE TABLE `alumnos` (
-     `id` int(11) NOT NULL AUTO_INCREMENT,
-     `nombre` varchar(255) NOT NULL,
-     `apellidos` varchar(255) NOT NULL,
-     PRIMARY KEY (`id`)
-   );
-
-   CREATE TABLE `alumnos_cursos` (
-     `id` int(11) NOT NULL AUTO_INCREMENT,
-     `idalumno` int(11) NOT NULL,
-     `idcurso` int(11) NOT NULL,
-     PRIMARY KEY (`id`)
-   );
+   CREATE TABLE `cursos` (`id` int AUTO_INCREMENT PRIMARY KEY, `nombre_curso` varchar(255) NOT NULL);
+   CREATE TABLE `alumnos` (`id` int AUTO_INCREMENT PRIMARY KEY, `nombre` varchar(255) NOT NULL, `apellidos` varchar(255) NOT NULL);
+   CREATE TABLE `alumnos_cursos` (`id` int AUTO_INCREMENT PRIMARY KEY, `idalumno` int NOT NULL, `idcurso` int NOT NULL);
    ```
-3. Check `configuraciones/bd.php` and match the credentials to your local MySQL setup.
-4. Open `http://localhost/student-certificate-portal/` in your browser.
+2. Set your local credentials in `configuraciones/bd.php`.
+3. Open `http://localhost/student-certificate-portal/`.
 
-> **Demo login**: the login check in `index.php` is hardcoded to `admin` / `123456`
-> for grading/demo purposes — this is an academic project, not a production system.
-> Replace it with real authentication (hashed passwords, a `users` table) before
-> using this code as a base for anything beyond the classroom.
+> **Demo login:** `admin` / `123456` — hardcoded for academic evaluation only. Replace with hashed passwords and a `users` table before using this as a production base.
 
-## Author
+---
 
-**Alejandro Oviedo**
+**Alejandro Oviedo** · [LinkedIn](https://www.linkedin.com/in/aleoviedo071298/) · [GitHub](https://github.com/aleoviedo071298)
